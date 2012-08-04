@@ -5,22 +5,6 @@
 
 class DataLibrary {
 
-/* Generic save/fetch functions
-	public static function saveXXX($YYY) {
-		// Description:	Saves YYY object to the database
-		// Parameters:
-		//	$YYY (XXX, req, Default:none) - XXX object to be saved
-		// Returns:		Boolean, true on success, false on failure
-	}
-
-	public static function fetchXXX($id) {
-		// Description:	Loads YYY object from the database
-		// Parameters:
-		//	$id (int, req, Default:none) - The sql id of the YYY to load
-		// Returns:		XXX object
-	}
-*/
-
 	public static function fetchCategoryOpts($cat, $constraint = NULL) {
 		// Description:	Loads options from database into array of strings
 		// Parameters:
@@ -34,19 +18,19 @@ class DataLibrary {
 		// Determine correct table
 		switch ($cat) {
 			case "effect types":
-				$catTbl = "rpg_c_effect_type";
+				$catTbl = TBLPREFIX . "c_effect_type";
 				break;
 			case "effects":
-				$catTbl = "rpg_c_effect";
+				$catTbl = TBLPREFIX . "c_effect";
 				break;
 			case "effect value types":
-				$catTbl = "rpg_c_effect_value_type";
+				$catTbl = TBLPREFIX . "c_effect_value_type";
 				break;
 			case "modifier types":
-				$catTbl = "rpg_c_modifier_type";
+				$catTbl = TBLPREFIX . "c_modifier_type";
 				break;
 			case "sheet locations":
-				$catTbl = "rpg_c_sheet_location";
+				$catTbl = TBLPREFIX . "c_sheet_location";
 				break;
 			default:
 				return False;
@@ -65,8 +49,9 @@ class DataLibrary {
 
 		while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$id			= $row["id"];
+			$order		= $row["order"];
 			$name		= $row["name"];
-			$opts[$id]	= $name;
+			$opts[$id]	= array("order" => $order, "name" => $name);
 		}
 
 		// Free result object
@@ -156,7 +141,8 @@ class DataLibrary {
 		$entity = New Entity;
 
 		// Query db for character properties
-		$query	= "SELECT * FROM `rpg_entity` WHERE `id` = $id";
+		$tbl = TBLPREFIX . "entity";
+		$query	= "SELECT * FROM `$tbl` WHERE `id` = $id";
 		$result	= $mysqli->query($query);
 
 		// Set object values
@@ -170,7 +156,8 @@ class DataLibrary {
 		$result->free();
 
 		// Query db for associated entities
-		$query	= "SELECT `id` FROM `rpg_entity_effect` WHERE `linked_entity` = $id";
+		$tbl = TBLPREFIX . "entity_effect";
+		$query	= "SELECT `id` FROM `$tbl` WHERE `linked_entity` = $id";
 		$result	= $mysqli->query($query);
 
 		// Fetch entity for each id
@@ -204,7 +191,8 @@ class DataLibrary {
 		$effect = New Effect;
 
 		// Query db for character properties
-		$query	= "SELECT * FROM `rpg_entity_effect` WHERE `id` = $id";
+		$tbl = TBLPREFIX . "entity_effect";
+		$query	= "SELECT * FROM `$tbl` WHERE `id` = $id";
 		$result	= $mysqli->query($query);
 
 		// Set object values
