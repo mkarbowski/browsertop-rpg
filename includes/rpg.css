@@ -1,0 +1,41 @@
+html,body {
+	margin: 0;
+	padding: 0;
+
+	background-image: url('/images/paper_drk.jpg');
+	background-repeat: repeat;
+	background-position: center top;
+	background-attachment: fixed;
+
+	text-align: center;
+}
+
+div#container {
+
+}
+
+div#content {
+	width: 500px;
+	height: 400px;
+	float: left;
+}
+
+div#sidebar {
+	width: 200px;
+	height: 400px;
+	float: left;
+}
+
+div#footer {
+	width: 700px;
+	height: 150px;
+	clear: both;
+}
+
+div.lt-paper {
+	background-image: url('/images/paper_lt.jpg');
+	background-repeat: repeat;
+	background-position: center top;
+	border: 1px solid #B42710;
+	margin: 15px;
+}
