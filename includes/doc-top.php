@@ -25,3 +25,4 @@
 	<?php include $navLvl."includes/styles.php"; ?>
 </head>
 <body>
+	<div id="container">

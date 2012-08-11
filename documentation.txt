@@ -1,11 +1,34 @@
-File comment format:
+These are strict guidelines, please follow.
 
+HTML standards:
+- XHTML Strict
+- Data/item labels are encased in the <label> tag and is sentence cased (example: <label>Base attack bonus:</label>)
+
+CSS standards:
+- Structure CSS rules as follows:
+	tag {
+		attribute: setting;
+	}
+- Individual words in ID and class names are lowercase and separated by hyphens (example: class="player-name")
+
+PHP standards:
+- Filenames are lowercase separated by hyphens (example: json-from-data.php)
+- Variables are camel case, starting with a lowercase (example: $modifierType)
+- Functions are camel case, starting with a lowercase (example: fetchCategoryOpts())
+- Class definitions are camel case, starting with an uppercase (example: DataLibrary)
+- Use mysqli php library for database communication
+	- Open the connection on a per page basis using: $mysqli = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+	- Be sure to close the connection at the bottom of the page: $mysqli->close();
+
+
+Use comments generously! The following are some suggestions (but are not required) on how to comment different parts of your code.
+
+File comment format:
 // Title:		<title>
 // Description:	<file description>
 // Author: 		<author name>
 
 Procedure comment format:
-
 // Description:	<procedure description>
 // Parameters:
 //	$<var> (<type>, <req/opt>, Default:<none/val>) - <parameter description>

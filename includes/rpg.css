@@ -1,17 +1,50 @@
 html,body {
 	margin: 0;
 	padding: 0;
-
+	/*
 	background-image: url('/images/paper_drk.jpg');
 	background-repeat: repeat;
 	background-position: center top;
 	background-attachment: fixed;
-
+	*/
 	text-align: center;
+
+	font-family: Arial,sans-serif;
+	font-size: 12px;
 }
 
 div#container {
+	width: 900px;
+	margin: 10px auto;
+	text-align: left;
+}
 
+div.line {
+	
+}
+span.item {
+	
+}
+span.item label {
+	font-weight: bold;
+}
+span.item span.value {
+	margin-left: 7px;
+	margin-right: 15px;
+}
+
+fieldset legend {
+	font-weight: bold;
+	font-style: italic;
+}
+fieldset table {
+	width: 100%;
+}
+fieldset table th {
+	text-align: right;
+}
+fieldset table tr.hor th {
+	text-align: center;
 }
 
 div#content {
